@@ -1,0 +1,13 @@
+C:\Users\endea\source\repos\FLP\FLP.Data\bin\Debug\net8.0\FLP.Data.deps.json
+C:\Users\endea\source\repos\FLP\FLP.Data\bin\Debug\net8.0\FLP.Data.dll
+C:\Users\endea\source\repos\FLP\FLP.Data\bin\Debug\net8.0\FLP.Data.pdb
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\FLP.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\FLP.Data.AssemblyInfoInputs.cache
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\FLP.Data.AssemblyInfo.cs
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\FLP.Data.csproj.CoreCompileInputs.cache
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\FLP.Data.sourcelink.json
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\FLP.Data.dll
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\refint\FLP.Data.dll
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\FLP.Data.pdb
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\ref\FLP.Data.dll
+C:\Users\endea\source\repos\FLP\FLP.Data\obj\Debug\net8.0\FLP.Data.csproj.AssemblyReference.cache

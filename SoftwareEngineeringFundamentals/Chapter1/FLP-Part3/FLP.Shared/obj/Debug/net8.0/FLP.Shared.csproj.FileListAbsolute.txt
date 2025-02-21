@@ -1,0 +1,12 @@
+C:\Users\endea\source\repos\FLP\FLP.Shared\bin\Debug\net8.0\FLP.Shared.deps.json
+C:\Users\endea\source\repos\FLP\FLP.Shared\bin\Debug\net8.0\FLP.Shared.dll
+C:\Users\endea\source\repos\FLP\FLP.Shared\bin\Debug\net8.0\FLP.Shared.pdb
+C:\Users\endea\source\repos\FLP\FLP.Shared\obj\Debug\net8.0\FLP.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\endea\source\repos\FLP\FLP.Shared\obj\Debug\net8.0\FLP.Shared.AssemblyInfoInputs.cache
+C:\Users\endea\source\repos\FLP\FLP.Shared\obj\Debug\net8.0\FLP.Shared.AssemblyInfo.cs
+C:\Users\endea\source\repos\FLP\FLP.Shared\obj\Debug\net8.0\FLP.Shared.csproj.CoreCompileInputs.cache
+C:\Users\endea\source\repos\FLP\FLP.Shared\obj\Debug\net8.0\FLP.Shared.sourcelink.json
+C:\Users\endea\source\repos\FLP\FLP.Shared\obj\Debug\net8.0\FLP.Shared.dll
+C:\Users\endea\source\repos\FLP\FLP.Shared\obj\Debug\net8.0\refint\FLP.Shared.dll
+C:\Users\endea\source\repos\FLP\FLP.Shared\obj\Debug\net8.0\FLP.Shared.pdb
+C:\Users\endea\source\repos\FLP\FLP.Shared\obj\Debug\net8.0\ref\FLP.Shared.dll
