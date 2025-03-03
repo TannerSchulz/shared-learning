@@ -1,0 +1,40 @@
+﻿@page "/register"
+@using FLP.Client.Services.UserAccount
+@inject IUserAccountService UserAccountService
+<div>
+    <div>
+        <h3>Register New User</h3>
+        <p style="color: red;">@ErrorMessage</p>
+    </div>
+    <div>
+        <EditForm Model="registerUser" OnValidSubmit="HandleValidRegister">
+            <div>
+                <label>Email: </label>
+                <InputText @bind-Value="registerUser.email"></InputText>
+            </div>
+            <div>
+                <label>Password: </label>
+                <InputText @bind-Value="registerUser.password"></InputText>
+            </div>
+            <div>
+                <label>Confirm Password: </label>
+                <InputText @bind-Value="registerUser.confirmPassword"></InputText>
+            </div>
+            <button type="submit">Register</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    string ErrorMessage;
+    RegisterModel registerUser = new RegisterModel();
+
+    public async void HandleValidRegister()
+    {
+        var status = await UserAccountService.Register(registerUser);
+        if(status.Code != "200")
+        {
+            ErrorMessage = status.Message;
+        }
+    }
+}
