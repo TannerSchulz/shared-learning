@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\endea\\source\\repos\\FLP\\FLP\\FLP.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\endea\\source\\repos\\FLP\\FLP\\FLP.Client\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FLP.Client.bundle.scp.css",
+      "PackagePath": "staticwebassets\\FLP.Client.vo3800fvhh.bundle.scp.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FLP.Client.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FLP.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.FLP.Client.props",
+      "PackagePath": "build\\FLP.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.FLP.Client.props",
+      "PackagePath": "buildMultiTargeting\\FLP.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.FLP.Client.props",
+      "PackagePath": "buildTransitive\\FLP.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

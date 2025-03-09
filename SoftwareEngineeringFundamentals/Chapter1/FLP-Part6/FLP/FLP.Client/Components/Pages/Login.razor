@@ -1,0 +1,68 @@
+﻿@page "/login"
+
+@using FLP.Client.Services.UserAccount
+@using Microsoft.AspNetCore.Components.Authorization
+@inject IUserAccountService UserAccountService
+@inject AuthenticationStateProvider AuthenticationState
+@inject NavigationManager NavigationManager
+
+<div>
+    <div>
+        <h3>Login User</h3>
+        <p style="color: red;">@ErrorMessage</p>
+    </div>
+    <div>
+        <EditForm Model="loginUser" OnValidSubmit="HandleValidLogin">
+            <DataAnnotationsValidator />
+            <div>
+                <label>Email: </label>
+                <InputText @bind-Value="loginUser.email"></InputText>
+                <ValidationMessage For="() => loginUser.email" />
+            </div>
+            <div>
+                <label>Password: </label>
+                <InputText type="password" @bind-Value="loginUser.password"></InputText>
+                <ValidationMessage For="() => loginUser.password" />
+            </div>
+            <button type="submit">Login</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private CustomAuthenticationStateProvider _customAuthState;
+
+    string ErrorMessage;
+    LoginModel loginUser = new LoginModel();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            if(firstRender)
+            {
+                _customAuthState = (CustomAuthenticationStateProvider)AuthenticationState;
+            }
+        }
+        catch(Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+    }
+
+    public async void HandleValidLogin()
+    {
+        var status = await UserAccountService.Login(loginUser);
+        if (status.Code != "200")
+        {
+            ErrorMessage = status.Message;
+            StateHasChanged();
+        }
+        else
+        {
+            _customAuthState = (CustomAuthenticationStateProvider)AuthenticationState;
+            await _customAuthState.MarkUserAsAuthenticated();
+            NavigationManager.NavigateTo("/");
+        }
+    }
+}

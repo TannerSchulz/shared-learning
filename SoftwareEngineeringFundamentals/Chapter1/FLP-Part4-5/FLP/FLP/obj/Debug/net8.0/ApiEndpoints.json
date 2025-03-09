@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "FLP.Controllers.UserAccountController",
+    "Method": "Register",
+    "RelativePath": "api/UserAccount/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "RegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
