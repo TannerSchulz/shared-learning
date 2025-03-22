@@ -1,0 +1,78 @@
+﻿@page "/settings/profile"
+@using FLP.Client.Services.Profile
+@using FLP.Shared.Models
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+
+@inject AuthenticationStateProvider AuthenticationState
+@inject NavigationManager NavigationManager
+@inject IProfileService ProfileService
+
+<div style="text-align: center; display: flex; justify-content: center; align-items: center;">
+    <div style="width: fit-content; padding: 12px; background-color: rgb(204, 213, 174);">
+        <div>
+            <h3>Edit Profile</h3>
+            <p style="color: red;">@ErrorMessage</p>
+        </div>
+        <div style="text-align: left;">
+            <EditForm Model="_Profile" OnValidSubmit="HandleValidProfile">
+                <DataAnnotationsValidator />
+                <div>
+                    <label>Display Name: </label>
+                    <InputText style="float: right;" @bind-Value="_Profile.DisplayName"></InputText>
+                    <br style="clear: both;" />
+                    <ValidationMessage For="() => _Profile.DisplayName" />
+                </div>
+                <div>
+                    <label>Biography: </label>
+                    <InputTextArea type="password" style="float: right;" @bind-Value="_Profile.Biography"></InputTextArea>
+                    <br style="clear: both;" />
+                    <ValidationMessage For="() => _Profile.Biography" />
+                </div>
+                <br style="clear: both;" />
+                <button type="submit">Save</button>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private CustomAuthenticationStateProvider _customAuthState;
+    public ClaimsPrincipal User;
+    public ProfileDto _Profile = new ProfileDto();
+
+    public string ErrorMessage;
+    public bool Edit = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            if(firstRender)
+            {
+                _customAuthState = (CustomAuthenticationStateProvider)AuthenticationState;
+                var authState = await _customAuthState.GetAuthenticationStateAsync();
+                User = authState.User;
+                if(User.Identity.IsAuthenticated)
+                {
+                    _Profile = await ProfileService.GetUserProfile();
+                    StateHasChanged();
+                }
+                else
+                {
+                    NavigationManager.NavigateTo("/Login", true);
+                }
+            }
+        }
+        catch(Exception ex)
+        {
+
+        }
+    }
+
+    private async void HandleValidProfile()
+    {
+        await ProfileService.SaveProfile(_Profile);
+        NavigationManager.NavigateTo("/", true);
+    }
+}

@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@implements IDisposable
+@inject NavigationManager Navigation
+
+<div class="nav-item px-3">
+    <AuthorizeView>
+        <Authorized>
+            <div @onclick="@(() => Navigation.NavigateTo("/Logout", true))" style="color: dodgerblue; cursor: pointer;">
+                <i class="bi bi-box-arrow-left"></i> Logout
+            </div>
+        </Authorized>
+        <NotAuthorized>
+            <div @onclick="@(() => Navigation.NavigateTo("/Login", true))" style="color: dodgerblue; cursor: pointer;">
+                <i class="bi bi-person-circle"></i> Login
+            </div>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>
+
+@code {
+    private string? currentUrl;
+
+    protected override void OnInitialized()
+    {
+        currentUrl = Navigation.Uri;
+        Navigation.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        currentUrl = Navigation.Uri;
+        StateHasChanged();
+    }
+
+    public void Dispose() => Navigation.LocationChanged -= OnLocationChanged;
+}

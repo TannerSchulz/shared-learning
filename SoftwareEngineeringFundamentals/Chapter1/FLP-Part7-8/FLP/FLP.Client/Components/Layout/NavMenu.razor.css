@@ -1,0 +1,4 @@
+﻿.nav-item ::deep a {
+    text-decoration: none;
+    color: rgb(40, 54, 24);
+}

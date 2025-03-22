@@ -1,0 +1,76 @@
+﻿@page "/login"
+
+@using FLP.Client.Services.UserAccount
+@using Microsoft.AspNetCore.Components.Authorization
+@inject IUserAccountService UserAccountService
+@inject AuthenticationStateProvider AuthenticationState
+@inject NavigationManager NavigationManager
+
+<div style="text-align: center; display: flex; justify-content: center; align-items: center;">
+    <div style="width: fit-content; padding: 12px; background-color: rgb(204, 213, 174);">
+        <div>
+            <h3>Login User</h3>
+            <p style="color: red;">@ErrorMessage</p>
+        </div>
+        <div style="text-align: left;">
+            <EditForm Model="loginUser" OnValidSubmit="HandleValidLogin" FormName="login">
+                <DataAnnotationsValidator />
+                <div>
+                    <label>Email: </label>
+                    <InputText style="float: right;" @bind-Value="loginUser.email"></InputText>
+                    <br style="clear: both;" />
+                    <ValidationMessage For="() => loginUser.email" />
+                </div>
+                <div>
+                    <label>Password: </label>
+                    <InputText type="password" @bind-Value="loginUser.password"></InputText>
+                    <br style="clear: both;" />
+                    <ValidationMessage For="() => loginUser.password" />
+                </div>
+                <br style="clear: both;" />
+                <button type="submit" style="float: right">Login</button>
+                <br style="clear: both;" />
+                <br style="clear: both;" />
+                <label>Need an Account? <a href="/Register">Register here</a></label>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private CustomAuthenticationStateProvider _customAuthState;
+
+    string ErrorMessage;
+    LoginModel loginUser = new LoginModel();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            if(firstRender)
+            {
+                _customAuthState = (CustomAuthenticationStateProvider)AuthenticationState;
+            }
+        }
+        catch(Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+    }
+
+    public async void HandleValidLogin()
+    {
+        var status = await UserAccountService.Login(loginUser);
+        if (status.Code != "200")
+        {
+            ErrorMessage = status.Message;
+            StateHasChanged();
+        }
+        else
+        {
+            _customAuthState = (CustomAuthenticationStateProvider)AuthenticationState;
+            await _customAuthState.MarkUserAsAuthenticated();
+            NavigationManager.NavigateTo("/");
+        }
+    }
+}

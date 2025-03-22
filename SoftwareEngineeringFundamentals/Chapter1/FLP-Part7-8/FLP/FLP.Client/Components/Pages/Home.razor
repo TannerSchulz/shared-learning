@@ -1,0 +1,78 @@
+﻿@page "/"
+@using FLP.Client.Services.Profile
+@using FLP.Shared.Models
+@using Microsoft.AspNetCore.Components.Authorization
+
+@inject AuthenticationStateProvider AuthenticationState
+@inject NavigationManager NavigationManager
+@inject IProfileService ProfileService
+
+<PageTitle>Home</PageTitle>
+
+<div>
+    <div style="width: 20%; height: calc(100vh - 48px); float: left; background-color: rgb(204, 213, 174);">
+        <div style="padding: 12px;">
+            <div style="text-align: center; display: flex; justify-content: center; align-items: center;">
+                <div style="border: 1px solid rgb(40, 54, 24); background-color: rgb(233, 237, 201); width: 200px; height: 200px; border-radius: 100px; display: flex; justify-content: center; align-items: center;">
+                    <label>Profile Picture</label>
+                </div>
+            </div>
+            <br />
+            <div>
+                @Profile.DisplayName
+                <br />
+                &#64;@Profile.UserName
+                <br />
+                Friends #
+                <br />
+                <br />
+                @Profile.Biography
+            </div>
+            <br />
+            <div>
+                <AuthorizeView>
+                    <Authorized>
+                        <div @onclick="@(() => NavigationManager.NavigateTo("/Settings/Profile"))" style="cursor: pointer; float: left; padding: 8px; background-color: rgb(250, 237, 205); border: 1px solid rgb(40, 54, 24);">Edit</div>
+                    </Authorized>
+                    <NotAuthorized>
+                        <div @onclick="@(() => NavigationManager.NavigateTo("/Login"))" style="cursor: pointer; float: left; padding: 8px; background-color: rgb(250, 237, 205); border: 1px solid rgb(40, 54, 24);">Login/Register</div>
+                    </NotAuthorized>
+                </AuthorizeView>
+                <br style="clear: both;"/>
+            </div>
+        </div>
+    </div>
+    <div style="width: calc(60% - 2px); height: calc(100vh - 48px); float: left; border-left: 1px solid rgb(40, 54, 24); border-right: 1px solid rgb(40, 54, 24);">
+        <div>
+            <p>Posts</p>
+        </div>
+    </div>
+    <div style="width: 20%; height: calc(100vh - 48px); float: left; background-color: rgb(204, 213, 174);">
+        <div>
+            <p>Alerts/Search</p>
+        </div>
+    </div>
+    <br style="clear: both;"/>
+</div>
+
+@code {
+    private CustomAuthenticationStateProvider _customAuthState;
+    public ProfileDto Profile = new ProfileDto();
+    public string ErrorMessage;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        try
+        {
+            if (firstRender)
+            {
+                _customAuthState = (CustomAuthenticationStateProvider)AuthenticationState;
+                Profile = await ProfileService.GetUserProfile();
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+    }
+}

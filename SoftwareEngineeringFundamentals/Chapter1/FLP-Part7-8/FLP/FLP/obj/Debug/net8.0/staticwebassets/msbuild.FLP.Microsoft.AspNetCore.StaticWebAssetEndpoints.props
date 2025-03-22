@@ -1,0 +1,16 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/FLP/app.99mhimqgyp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\app.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"99mhimqgyp"},{"Name":"integrity","Value":"sha256-E2saDgO1nTiGDwTD5nOsuN6VXBWSPGsTN2xQuaTSMjg="},{"Name":"label","Value":"_content/FLP/app.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2326"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022E2saDgO1nTiGDwTD5nOsuN6VXBWSPGsTN2xQuaTSMjg=\u0022"},{"Name":"Last-Modified","Value":"Fri, 21 Mar 2025 19:01:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/FLP/app.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\app.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-E2saDgO1nTiGDwTD5nOsuN6VXBWSPGsTN2xQuaTSMjg="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2326"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022E2saDgO1nTiGDwTD5nOsuN6VXBWSPGsTN2xQuaTSMjg=\u0022"},{"Name":"Last-Modified","Value":"Fri, 21 Mar 2025 19:01:34 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>
